@@ -36,9 +36,20 @@ router.post("/", async (req, res) => {
 });
 
 // UPDATE
-// router.put('/', async (req, res) => {
-
-// })
+router.put("/:id", async (req, res) => {
+  const id = req.params.id;
+  const changes = req.body;
+  try {
+    const updatedAction = await actionModel.update(id, changes);
+    if (updatedAction) {
+      res.status(200).json(updatedAction);
+    } else {
+      res.status(404).json({ error: "404 error, no action found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "internal server error" });
+  }
+});
 
 // DELETE
 // router.delete('/', async (req, res) => {
