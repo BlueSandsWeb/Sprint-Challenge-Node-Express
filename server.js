@@ -3,16 +3,16 @@ const server = express();
 
 server.use(express.json());
 
+const actionRoutes = require("./routers/actionRoutes.js");
+const projectRoutes = require("./routers/projectRoutes.js");
+
+server.use("/api/action", actionRoutes);
+server.use("/api/project", projectRoutes);
+
 // READ - get()
 server.get("/", (req, res) => {
-  res.status(200).send("Homepage");
+  res.status(200).send("try /api/actionRoutes or /api/actionRoutes");
 });
-
-// CREATE - insert()
-
-// UPDATE - update()
-
-// DELETE - remove()
 
 // No page found
 server.use((req, res) => {
