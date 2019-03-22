@@ -39,7 +39,6 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const id = req.params.id;
   const changes = req.body;
-  console.log(`\n id: ${id} \n changes: ${changes}`);
   try {
     const updatedProject = await projectModel.update(id, changes);
     if (updatedProject) {

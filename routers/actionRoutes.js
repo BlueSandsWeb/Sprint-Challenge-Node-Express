@@ -52,8 +52,18 @@ router.put("/:id", async (req, res) => {
 });
 
 // DELETE
-// router.delete('/', async (req, res) => {
-
-// })
+router.delete("/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const deleted = await actionModel.remove(id);
+    if (deleted === 1) {
+      res.status(204).json({ message: "Action deleted successfully" });
+    } else {
+      res.status(404).json({ error: "404 action not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error." });
+  }
+});
 
 module.exports = router;
