@@ -3,26 +3,39 @@ const router = express.Router();
 
 const projectModel = require("../data/helpers/projectModel.js");
 
+// READ ALL PROJECTS
 router.get("/", async (req, res) => {
   try {
-    const posts = await projectModel.get();
-    res.status(200).json(posts);
+    const projects = await projectModel.get();
+    res.status(200).json(projects);
   } catch (error) {
     res.status(500).send("Internal Error");
   }
 });
 
+// READ A PROJECT'S ACTIONS ONLY
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const posts = await projectModel.get(id);
-    res.status(200).json(posts);
+    const projectActions = await projectModel.get(id);
+    res.status(200).json(projectActions);
   } catch (error) {
     res.status(500).send("Internal Error");
   }
 });
 
-// CREATE
+// READ A PROJECT AND IT'S ACTIONS
+router.get("/project-actions/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const project = await projectModel.getProjectActions(id);
+    res.status(200).json(project);
+  } catch (error) {
+    res.status(500).send("Internal Error");
+  }
+});
+
+// CREATE PROJECT
 router.post("/", async (req, res) => {
   const project = req.body;
   try {
@@ -35,7 +48,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// UPDATE
+// UPDATE PROJECT
 router.put("/:id", async (req, res) => {
   const id = req.params.id;
   const changes = req.body;
@@ -51,7 +64,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// DELETE
+// DELETE PROJECT
 router.delete("/:id", async (req, res) => {
   const id = req.params.id;
   try {
