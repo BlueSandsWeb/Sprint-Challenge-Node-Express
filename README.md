@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+  - Two of the parts of Express that I learned about this week were routing and implimenting crud operations.
+
 - [ ] Describe Middleware?
+
+  - Middleware is a set of functions that are executed in order, that have access to the request and response objects. Sometimes they are described as the bridge between the application and the database. Middleware does many things such as sanatizing input from users for security, hashing passwords and usernames, routing, enabling the use of json, logging and much more.
 
 - [ ] Describe a Resource?
 
+  - This is a little bit of an ambiguous question. I'm going to assume it's in the context of something like CORS (Cross Origin Resource Sharing). A resource is a function or data.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+  - a status code along with a helpful error message that describes what went wrong and most likely why.
+
 - [ ] How can we partition our application into sub-applications?
+
+  - There are several ways to partition an applicatioin into sub applications. One way is to run them on seperate ports and use axios to have them talk. Another way is to have the front end portion of the application be started up by the backend from only a specific URL and the rest of the url's for the backend have a specific leading route such as /api/something or other.
 
 ## Project Setup
 
