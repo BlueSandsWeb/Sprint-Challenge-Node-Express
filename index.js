@@ -1,3 +1,8 @@
-// play this: https://www.youtube.com/watch?v=d-diB65scQU
+const server = require("./server.js");
+require("dotenv").config();
 
-// code away!
+const port = process.env.PORT || 5000;
+
+server.listen(port, () => {
+  console.log(`\n Server Running on http://localhost:${port}`);
+});
